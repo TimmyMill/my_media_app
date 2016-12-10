@@ -42,7 +42,7 @@ public class Database
             //Create songs table in the database if it doesn't exist
             String createTableSQL =
                     "CREATE TABLE songs " +
-                    "(title TEXT NOT NULL," +
+                    "(paneTitle TEXT NOT NULL," +
                     " artist TEXT NOT NULL," +
                     " album TEXT NOT NULL," +
                     " path TEXT NOT NULL)";

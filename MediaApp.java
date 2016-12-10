@@ -1,7 +1,9 @@
 package com.timmy;
 import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 //import javafx.scene.media.MediaApp;
@@ -11,9 +13,8 @@ public class MediaApp extends Application
     Stage window;
     Scene scene;
     BorderPane root;
-//    ControlsPane ctrlPane = new ControlsPane();
-//    AppMenu menu = new AppMenu();
     TopPane topPane = new TopPane();
+    LibraryPane libPane = new LibraryPane();
 
     public static void main(String[] args)
     { launch(args); }
@@ -26,9 +27,17 @@ public class MediaApp extends Application
         window.setTitle("My Media App");
         root = new BorderPane();
         root.setTop(topPane);
+        root.setLeft(libPane);
 
         scene = new Scene(root, 400, 300);
+        scene.getStylesheets().add("/com/timmy/styles/red-orb.css");
         window.setScene(scene);
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+        Double width = primaryScreenBounds.getWidth();
+        Double height = primaryScreenBounds.getHeight();
+        window.setWidth(width);
+        window.setHeight(height);
         window.show();
     }
+
 }
