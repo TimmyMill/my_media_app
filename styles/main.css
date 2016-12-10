@@ -1,18 +1,18 @@
 /* Controls Style Effects */
-.button#previous {
-    -fx-graphic: url("/com/timmy/images/player_rew.png");
-}
-.button#play {
-    -fx-graphic: url("/com/timmy/images/player_play.png");
-}
+/*.button#previous {*/
+    /*-fx-graphic: url("/com/timmy/images/player_rew.png");*/
+/*}*/
+/*.button#play {*/
+    /*-fx-graphic: url("/com/timmy/images/player_play.png");*/
+/*}*/
 
-.button#stop {
-    -fx-graphic: url("/com/timmy/images/player_stop.png");
-}
+/*.button#stop {*/
+    /*-fx-graphic: url("/com/timmy/images/player_stop.png");*/
+/*}*/
 
-.button#next {
-    -fx-graphic: url("/com/timmy/images/player_fwd.png");
-}
+/*.button#next {*/
+    /*-fx-graphic: url("/com/timmy/images/player_fwd.png");*/
+/*}*/
 
 /* Library Style Effects */
 .button#artists {

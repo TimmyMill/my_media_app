@@ -16,9 +16,6 @@ public class MediaApp extends Application
     TopPane topPane = new TopPane();
     LibraryPane libPane = new LibraryPane();
 
-    public static void main(String[] args)
-    { launch(args); }
-
     @Override
     public void start(Stage primaryStage) throws Exception
     {
@@ -37,7 +34,16 @@ public class MediaApp extends Application
         Double height = primaryScreenBounds.getHeight();
         window.setWidth(width);
         window.setHeight(height);
+        setTheme();
         window.show();
     }
 
+    public static void main(String[] args)
+    { launch(args); }
+
+    void setTheme()
+    {
+        topPane.playbackToolBar.setTheme("red-orb.css");
+        topPane.soundToolBar.setTheme("red-orb.css");
+    }
 }

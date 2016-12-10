@@ -5,14 +5,17 @@ import javafx.scene.layout.BorderPane;
 public class TopPane extends BorderPane
 {
     AppMenu menu;
-    ControlsPane ctrlPane;
+    PlaybackControls playbackToolBar;
+    SoundControls soundToolBar;
 
     TopPane()
     {
         menu = new AppMenu();
         this.setTop(menu);
-        ctrlPane = new ControlsPane();
-        ctrlPane.setAlignment(Pos.BASELINE_CENTER);
-        this.setCenter(ctrlPane);
+        playbackToolBar = new PlaybackControls();
+        soundToolBar = new SoundControls();
+
+        this.setCenter(playbackToolBar);
+        this.setRight(soundToolBar);
     }
 }

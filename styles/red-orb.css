@@ -27,7 +27,7 @@
     -fx-graphic: url("/com/timmy/images/red_orb/playerNext.png");
 }
 
-.button#sound-on {
+#sound-on {
     -fx-graphic: url("/com/timmy/images/red_orb/soundOn.png");
 }
 
