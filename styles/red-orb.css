@@ -33,6 +33,14 @@
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/playerNext.png");
 }
 
+.button#repeat {
+    -fx-graphic: url("/com/timmy/images/red_orb/32x32/loop.png");
+}
+
+.button#shuffle {
+
+}
+
 #sound-on {
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/soundOn.png");
 }
