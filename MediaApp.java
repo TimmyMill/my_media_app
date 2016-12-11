@@ -43,7 +43,10 @@ public class MediaApp extends Application
 
     void setTheme()
     {
-        topPane.playbackToolBar.setTheme("red-orb.css");
-        topPane.soundToolBar.setTheme("red-orb.css");
+        topPane.controlsPane.playbackToolBar.setTheme("red-orb.css");
+        topPane.controlsPane.soundToolBar.setTheme("red-orb.css");
+        topPane.controlsPane.setArtwork("/com/timmy/images/red_orb/48x48/music2.png");
+        topPane.controlsPane.setNowPlaying("Now Playing");
+        libPane.setTheme("red-orb.css");
     }
 }

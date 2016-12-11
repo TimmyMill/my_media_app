@@ -1,8 +1,14 @@
 .root {
     -fx-background-color: #060606;
+    -fx-text-fill: #d70000;
 }
 
-/* Controls Style Effects */
+.label {
+    -fx-text-fill: #d70000;
+    /*af0202*/
+}
+
+/* Playback Controls Style Effects */
 .button#previous {
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/playerPrevious.png");
 }
@@ -31,8 +37,8 @@
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/soundOn.png");
 }
 
-.button#sound-off {
-
+#sound-off {
+    -fx-graphic: url("/com/timmy/images/red_orb/32x32/soundOff.png");
 }
 
 /* Library Style Effects */
