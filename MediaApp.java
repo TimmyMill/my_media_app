@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class MediaApp extends Application
 {
-    Stage window;
+    static Stage window;
     Scene scene;
     BorderPane root;
     TopPane topPane = new TopPane();

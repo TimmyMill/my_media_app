@@ -39,7 +39,7 @@ public class ControlsPane extends GridPane
         setMargin(soundToolBar, new Insets(6, 10, 4, 50));
 
         this.getChildren().addAll(artwork, nowPlaying, playbackToolBar, soundToolBar);
-        this.setAlignment(Pos.BASELINE_CENTER);
+        this.setAlignment(Pos.BOTTOM_CENTER);
         this.setId("control-pane");
 //        this.setGridLinesVisible(true); // uncomment for testing
     }
