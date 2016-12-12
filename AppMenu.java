@@ -1,21 +1,19 @@
 package com.timmy;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
-
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
 public class AppMenu extends MenuBar //implements EventHandler
 {
@@ -36,14 +34,16 @@ public class AppMenu extends MenuBar //implements EventHandler
         //File menu items:
         fileNew = new MenuItem("New");
         fileOpen = new MenuItem("_Open...");
+        fileOpen.setId("open");
         fileOpen.setAccelerator(new KeyCodeCombination
                 (KeyCode.O, KeyCombination.CONTROL_DOWN));
-        fileOpen.setOnAction(event -> openFile());
+        fileOpen.setOnAction(this::handleFiles);
 
         fileAdd = new MenuItem("Add to Library...");
+        fileAdd.setId("add");
         fileAdd.setAccelerator(new KeyCodeCombination
                 (KeyCode.O, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
-        fileAdd.setOnAction(event1 -> addFile());
+        fileAdd.setOnAction(this::handleFiles);
 
         fileExit = new MenuItem("E_xit");
         fileExit.setAccelerator(new KeyCodeCombination
@@ -64,39 +64,74 @@ public class AppMenu extends MenuBar //implements EventHandler
         this.getMenus().addAll(fileMenu, ctrlMenu);
     }
 
-    void openFile()
+    void handleFiles(Event event)
     {
         FileChooser chooser = new FileChooser();
-        chooser.setTitle("Open");
-        try
-        {
-            chooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Music"));
-            chooser.showOpenDialog(MediaApp.window);
-        }
+        File selectedFile;
+        List<File> files;
 
-        catch (IllegalArgumentException e)
+        switch (((MenuItem)event.getSource()).getId())
         {
-            chooser.setInitialDirectory(new File(System.getProperty("user.home")));
-            chooser.showOpenDialog(MediaApp.window);
+            case "open":
+            {
+                chooser.setTitle("Open");
+                try
+                {
+                    chooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Music"));
+                    selectedFile = chooser.showOpenDialog(MediaApp.window);
+                    if (selectedFile != null)
+                        openFile(selectedFile);
+                }
+
+                catch (IllegalArgumentException e)
+                {
+                    chooser.setInitialDirectory(new File(System.getProperty("user.home")));
+                    selectedFile = chooser.showOpenDialog(MediaApp.window);
+                    if (selectedFile != null)
+                         openFile(selectedFile);
+                    System.out.println("Here");
+                }
+
+                break;
+
+            }
+
+            case "add":
+            {
+                chooser.setTitle("Add");
+                try
+                {
+                    chooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Music"));
+                    files = chooser.showOpenMultipleDialog(MediaApp.window);
+                    if (files != null)
+                        addFile(files);
+                }
+
+                catch (IllegalArgumentException e)
+                {
+                    chooser.setInitialDirectory(new File(System.getProperty("user.home")));
+                    files = chooser.showOpenMultipleDialog(MediaApp.window);
+                    if (files != null)
+                        addFile(files);
+                }
+
+                break;
+
+            }
         }
 
     }
 
-    void addFile()
+    void openFile(File file)
     {
-        FileChooser chooser = new FileChooser();
-        chooser.setTitle("Add");
-        try
-        {
-            chooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Music"));
-            chooser.showOpenMultipleDialog(MediaApp.window);
-        }
+        System.out.println(file.getAbsolutePath());
+    }
 
-        catch (IllegalArgumentException e)
-        {
-            chooser.setInitialDirectory(new File(System.getProperty("user.home")));
-            chooser.showOpenDialog(MediaApp.window);
-        }
+    void addFile(List<File> files)
+    {
+        files.forEach(file -> System.out.println(file.getAbsolutePath()));
+//        Consumer<File> consumer = File::getPath;
+//        files.forEach(consumer.andThen(System.out::println));
     }
 
     void exit()
