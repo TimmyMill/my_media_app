@@ -15,18 +15,19 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class AudioFile
 {
+    private String title;
     private String artist;
     private String album;
-    private String title;
+    private String genre;
     private String path;
     private File file;
     private ArrayList<String> songInfo;
     private Media media;
 
-    AudioFile(String path, File file)
+    AudioFile(File file)
     {
-        this.path = path;
         this.file = file;
+        this.path = formatPath(this.file);
         media = new Media(path);
         songInfo = new ArrayList<>();
         getSongData();
@@ -51,10 +52,12 @@ public class AudioFile
             title = metadata.get("title");
             artist = metadata.get("xmpDM:artist");
             album = metadata.get("xmpDM:album");
+            genre = metadata.get("xmpDM:genre");
 
             songInfo.add(title);
             songInfo.add(artist);
             songInfo.add(album);
+            songInfo.add(genre);
         }
 
         catch (IOException | SAXException | TikaException e)
@@ -63,10 +66,15 @@ public class AudioFile
         }
     }
 
+    private String formatPath(File file) { return String.format("file://%s", file.getAbsoluteFile()); }
+
+
+
     //Getters
+    public String getTitle() {return title;}
     public String getArtist() {return artist;}
     public String getAlbum() {return album;}
-    public String getTitle() {return title;}
+    public String getGenre() {return genre;}
     public String getPath() {return path;}
     public Media getMedia() { return media; }
     public File getFile() {return file;}

@@ -8,6 +8,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import java.io.File;
@@ -98,6 +99,7 @@ public class AppMenu extends MenuBar //implements EventHandler
 
             case "add":
             {
+                //TODO Figure out how to add more than one file without dialog box closing
                 chooser.setTitle("Add");
                 try
                 {
@@ -105,6 +107,7 @@ public class AppMenu extends MenuBar //implements EventHandler
                     files = chooser.showOpenMultipleDialog(MediaApp.window);
                     if (files != null)
                         addFile(files);
+                    System.out.println("Add try");
                 }
 
                 catch (IllegalArgumentException e)
@@ -113,6 +116,7 @@ public class AppMenu extends MenuBar //implements EventHandler
                     files = chooser.showOpenMultipleDialog(MediaApp.window);
                     if (files != null)
                         addFile(files);
+                    System.out.println("Add caught");
                 }
 
                 break;
@@ -124,19 +128,20 @@ public class AppMenu extends MenuBar //implements EventHandler
 
     void openFile(File file)
     {
-        System.out.println(file.getAbsolutePath());
+        AudioFile af = new AudioFile(file);
+        MediaPlayer mp = new MediaPlayer(af.getMedia());
+        mp.play();
     }
 
     void addFile(List<File> files)
     {
         files.forEach(file -> System.out.println(file.getAbsolutePath()));
+
+        files.forEach(Database::addToLibrary);
 //        Consumer<File> consumer = File::getPath;
 //        files.forEach(consumer.andThen(System.out::println));
     }
 
-    void exit()
-    {
-        System.exit(0);
-    }
+    void exit() { System.exit(0); }
 
 }
