@@ -3,10 +3,9 @@
     -fx-text-fill: #d70000;
 }
 
-.label {
-    -fx-text-fill: #d70000;
-    /*af0202*/
-}
+/*.label {*/
+    /*-fx-text-fill: #d70000;*/
+/*}*/
 
 /* Playback Controls Style Effects */
 .button#previous {
@@ -50,13 +49,16 @@
 }
 
 /* Library Style Effects */
-.button#artists {
-    -fx-background-color: transparent;
+#library {
+    -fx-background-color: #af0202;
 }
 
 .tool-bar#library-tool-bar {
     -fx-background-color: transparent;
+}
 
+.tool-bar#library-tool-bar .toggle-button {
+    /*-fx-background-color: transparent;*/
     -fx-border-style: none;
     -fx-border-insets: 10px;
 }

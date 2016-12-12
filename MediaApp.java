@@ -14,26 +14,25 @@ public class MediaApp extends Application
     Scene scene;
     BorderPane root;
     TopPane topPane = new TopPane();
-    LibraryPane libPane = new LibraryPane();
+    LibraryPane libPane; //= new LibraryPane();
 
     @Override
     public void start(Stage primaryStage) throws Exception
     {
         Database db = new Database();
+        libPane = new LibraryPane();
         window = primaryStage;
         window.setTitle("My Media App");
         root = new BorderPane();
-        root.setTop(topPane);
         root.setLeft(libPane);
+        root.setTop(topPane);
 
-        scene = new Scene(root, 400, 300);
-        scene.getStylesheets().add("/com/timmy/styles/red-orb.css");
-        window.setScene(scene);
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         Double width = primaryScreenBounds.getWidth();
         Double height = primaryScreenBounds.getHeight();
-        window.setWidth(width);
-        window.setHeight(height);
+        scene = new Scene(root, width, height);
+        scene.getStylesheets().add("/com/timmy/styles/red-orb.css");
+        window.setScene(scene);
         setTheme();
         window.show();
     }
