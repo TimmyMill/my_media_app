@@ -25,7 +25,7 @@ public class PlaybackBar extends ToolBar
         fastRwdButton.setId("fast-rewind");
 
         playButton = new Button();
-        playButton.setId("play");
+        playButton.setId("play-pause");
 //        playButton.setOnAction(event -> {
 //            playBackHandler(event);
 //        });

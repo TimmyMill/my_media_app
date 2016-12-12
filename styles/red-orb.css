@@ -27,7 +27,7 @@
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/playerFastRev.png");
 }
 
-.button#play {
+.button#play-pause {
     -fx-background-color: transparent;
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/playerPlay.png");
 }

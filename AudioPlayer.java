@@ -18,16 +18,98 @@ public class AudioPlayer extends BorderPane
     {
         this.player = player;
         libraryPane = new LibraryPane();
-        topPane = new TopPane(this::EventHandler);
+        // create an event handler for top pane
+        topPane = new TopPane(event ->
+        {
+            // this will be used to get the player's current state
+            Status status = player.getStatus();
+            switch (((Button) event.getSource()).getId())
+            {
+                //back
+                case "previous":
+                {
+                    break;
+                }
+                //rewind
+                case "fast-rewind":
+                {
+                    break;
+                }
+                //play-pause
+                case "play-pause":
+                {
+                    if (status == Status.UNKNOWN         // player status is unknown immediately after creation
+                            || status == Status.HALTED)  // player status is halted when a critical error has occurred
+                    {
+                        return;
+                    }
+
+                    if (status == Status.READY            // player status is ready when it's prepared to play
+                            || status == Status.PAUSED    // player status is paused when playback is paused
+                            || status == Status.STOPPED)  // player status is stopped when playback is paused
+                    {
+                        //TODO: Add if statement to check if the song is over
+                        // and if we're on repeat, shuffle, end of album
+                        player.play();
+                    }
+
+                    else
+                    {
+                        player.pause();
+                    }
+
+                    break;
+                }
+                //stop
+                case "stop":
+                {
+                    break;
+                }
+                //forward
+                case "next":
+                {
+                    break;
+                }
+                //fast fwd
+                case "fast-forward":
+                {
+                    break;
+                }
+            }
+        });
+
         //set nodes
         setTop(topPane);
         setLeft(libraryPane);
         setTheme();
-    }
 
-    void EventHandler(ActionEvent event)
-    {
-        System.out.println(((Button)event.getSource()).getId());
+        player.setOnPlaying(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+
+        player.setOnPaused(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+
+        player.setOnReady(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+
+        player.setOnStopped(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
     }
 
     void setTheme()
@@ -39,3 +121,12 @@ public class AudioPlayer extends BorderPane
         libraryPane.setTheme("red-orb.css");
     }
 }
+
+
+//Current\Next  READY       PAUSED      PLAYING             STALLED         STOPPED
+//UNKNOWN       pre-roll
+//READY                                 autoplay; play()
+//PAUSED			                    play()		                        stop()
+//PLAYING                   pause()	                        buffering data	stop()
+//STALLED		            pause()	    data buffered		                stop()
+//STOPPED		            pause()	    play()
