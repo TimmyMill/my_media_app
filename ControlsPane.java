@@ -11,8 +11,8 @@ public class ControlsPane extends GridPane
 {
     Label artwork;
     Label nowPlaying;
-    PlaybackControls playbackToolBar;
-    SoundControls soundToolBar;
+    PlaybackBar playbackToolBar;
+    SoundBar soundToolBar;
 
     public ControlsPane()
     {
@@ -28,18 +28,19 @@ public class ControlsPane extends GridPane
         setConstraints(nowPlaying, 3, 0, 3, 1, HPos.CENTER, VPos.TOP);
         setMargin(nowPlaying, new Insets(10, 8, 6, 8));  //top, right, bottom, left
 
-        playbackToolBar = new PlaybackControls();
+        playbackToolBar = new PlaybackBar();
         // column=3, row=2, colSpan=3, rowSpan=2
         setConstraints(playbackToolBar, 3, 2, 3, 2, HPos.CENTER, VPos.BOTTOM);
         setMargin(playbackToolBar, new Insets(6, 10, 4, 10));
 
-        soundToolBar = new SoundControls();
+        soundToolBar = new SoundBar();
         // column=6, row=2, colSpan=3, rowSpan=2
         setConstraints(soundToolBar, 6, 2, 3, 2, HPos.RIGHT, VPos.BOTTOM);
         setMargin(soundToolBar, new Insets(6, 10, 4, 50));
 
         this.getChildren().addAll(artwork, nowPlaying, playbackToolBar, soundToolBar);
         this.setAlignment(Pos.BASELINE_CENTER);
+        this.setId("control-pane");
 //        this.setGridLinesVisible(true); // uncomment for testing
     }
 

@@ -1,34 +1,46 @@
 package com.timmy;
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Side;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public class SoundControls extends ToolBar
+
+public class SoundBar extends ToolBar
 {
     CustomMenuItem volumeSlider;
     Button repeatButton, shuffleButton;
     SoundButton soundButton;
+    ArrayList<Node> itemList;
 
-    SoundControls()
+    SoundBar()
     {
         this.repeatButton = new Button();
         this.repeatButton.setId("repeat");
+
         this.shuffleButton = new Button();
         this.shuffleButton.setId("shuffle");
+
         this.soundButton = new SoundButton();
-        this.getItems().addAll(repeatButton, shuffleButton, soundButton);
+
+        itemList = new ArrayList<>(Arrays.asList(repeatButton, shuffleButton, soundButton));
+        itemList.forEach(Node -> setPadding(Insets.EMPTY));
+        for (Node item : itemList) this.getItems().add(item);
+        this.setId("sound-bar");
     }
 
     class SoundButton extends MenuButton
     {
         SoundButton()
         {
-            this.setId("sound-on");
             volumeSlider = new CustomMenuItem(new VolumeSlider());
             volumeSlider.setHideOnClick(false);
-            this.getItems().add(volumeSlider);
             this.setPopupSide(Side.TOP);
+            this.getItems().add(volumeSlider);
+            this.setId("sound-on");
         }
     }
 
@@ -37,6 +49,7 @@ public class SoundControls extends ToolBar
         VolumeSlider()
         {
             setOrientation(Orientation.VERTICAL);
+            setPrefWidth(32);
         }
     }
 

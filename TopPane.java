@@ -18,15 +18,15 @@ public class TopPane extends BorderPane
 //public class TopPane extends BorderPane
 //{
 //    AppMenu menu;
-//    PlaybackControls playbackToolBar;
-//    SoundControls soundToolBar;
+//    PlaybackBar playbackToolBar;
+//    SoundBar soundToolBar;
 //
 //    TopPane()
 //    {
 //        menu = new AppMenu();
 //        this.setTop(menu);
-//        playbackToolBar = new PlaybackControls();
-//        soundToolBar = new SoundControls();
+//        playbackToolBar = new PlaybackBar();
+//        soundToolBar = new SoundBar();
 //
 //        this.setCenter(playbackToolBar);
 //        this.setRight(soundToolBar);

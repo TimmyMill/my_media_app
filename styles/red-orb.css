@@ -7,50 +7,96 @@
     /*-fx-text-fill: #d70000;*/
 /*}*/
 
-/* Playback Controls Style Effects */
+/*Top Pane in Window */
+#control-pane {
+    -fx-background-color: linear-gradient(to bottom, #d70000, #060606);
+}
+
+/*Playback Bar Style Effects */
+#playback-bar {
+    -fx-background-color: #060606;
+}
+
 .button#previous {
+    -fx-background-color: transparent;
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/playerPrevious.png");
 }
 
 .button#fast-rewind {
+    -fx-background-color: transparent;
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/playerFastRev.png");
 }
 
 .button#play {
+    -fx-background-color: transparent;
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/playerPlay.png");
 }
 
 .button#stop {
+    -fx-background-color: transparent;
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/playerStop.png");
 }
 
 .button#fast-forward {
+    -fx-background-color: transparent;
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/playerFastFwd.png");
 }
 
 .button#next {
+    -fx-background-color: transparent;
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/playerNext.png");
 }
 
+/*Sound Bar Style Effects */
+#sound-bar {
+    -fx-background-color: #060606;
+}
+
 .button#repeat {
+    -fx-background-color: transparent;
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/loop.png");
 }
 
 .button#shuffle {
-
+    -fx-background-color: transparent;
+}
+/*hides the stupid arrow button that shows up by default on menu-buttons*/
+.menu-button > .arrow-button,
+.menu-button > .arrow-button > .arrow {
+    -fx-padding: 0;
 }
 
 #sound-on {
+    -fx-background-color: transparent;
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/soundOn.png");
+    -fx-content-display: graphic-only;
 }
 
 #sound-off {
+    -fx-background-color: transparent;
     -fx-graphic: url("/com/timmy/images/red_orb/32x32/soundOff.png");
 }
 
+/*.slider:focused .thumb {*/
+    /*-fx-background-color: transparent;*/
+/*}*/
+
+/*.context-menu {*/
+    /*!*-fx-selection-bar: #060606;*!*/
+    /*-fx-background-color: transparent;*/
+/*}*/
+
+/*.slider .thumb {*/
+    /*-fx-background-color: transparent;*/
+/*}*/
+
 /* Library Style Effects */
+
 #library {
-    -fx-background-color: #af0202;
+    /*-fx-background-color: #af0202;*/
+    -fx-font-family: "Ubuntu Mono";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
 }
 
 .tool-bar#library-tool-bar {
@@ -58,9 +104,12 @@
 }
 
 .tool-bar#library-tool-bar .toggle-button {
+    -fx-font-family: "Ubuntu Mono";
+    -fx-font-size: 16px;
+    -fx-opacity: .5;
     /*-fx-background-color: transparent;*/
-    -fx-border-style: none;
-    -fx-border-insets: 10px;
+    /*-fx-border-style: none;*/
+    /*-fx-border-insets: 10px;*/
 }
 
 /*<a href="http://www.axialis.com/free/icons">Icons</a> by <a href="http://www.axialis.com">Axialis Team</a>*/
