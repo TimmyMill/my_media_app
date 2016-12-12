@@ -1,4 +1,6 @@
 package com.timmy;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,7 +16,7 @@ public class ControlsPane extends GridPane
     PlaybackBar playbackToolBar;
     SoundBar soundToolBar;
 
-    public ControlsPane()
+    public ControlsPane(EventHandler<ActionEvent> playbackHandler)
     {
         artwork = new Label();
         artwork.setId("artwork");
@@ -28,7 +30,7 @@ public class ControlsPane extends GridPane
         setConstraints(nowPlaying, 3, 0, 3, 1, HPos.CENTER, VPos.TOP);
         setMargin(nowPlaying, new Insets(10, 8, 6, 8));  //top, right, bottom, left
 
-        playbackToolBar = new PlaybackBar();
+        playbackToolBar = new PlaybackBar(playbackHandler);
         // column=3, row=2, colSpan=3, rowSpan=2
         setConstraints(playbackToolBar, 3, 2, 3, 2, HPos.CENTER, VPos.BOTTOM);
         setMargin(playbackToolBar, new Insets(6, 10, 4, 10));
@@ -44,13 +46,7 @@ public class ControlsPane extends GridPane
 //        this.setGridLinesVisible(true); // uncomment for testing
     }
 
-    public void setArtwork(String artwork)
-    {
-        this.artwork.setGraphic(new ImageView(artwork));
-    }
+    public void setArtwork(String artwork) { this.artwork.setGraphic(new ImageView(artwork)); }
 
-    public void setNowPlaying(String text)
-    {
-        this.nowPlaying.setText(text);
-    }
+    public void setNowPlaying(String text) { this.nowPlaying.setText(text); }
 }

@@ -1,4 +1,6 @@
 package com.timmy;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.layout.BorderPane;
 
@@ -7,11 +9,11 @@ public class TopPane extends BorderPane
     AppMenu menu;
     ControlsPane controlsPane;
 
-    TopPane()
+    TopPane(EventHandler<ActionEvent> playbackHandler)
     {
         menu = new AppMenu();
         this.setTop(menu);
-        controlsPane = new ControlsPane();
+        controlsPane = new ControlsPane(playbackHandler);
         this.setCenter(controlsPane);
     }
 }

@@ -1,20 +1,14 @@
 package com.timmy;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.*;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
-import javafx.stage.Window;
+
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class AppMenu extends MenuBar //implements EventHandler
 {
@@ -79,7 +73,7 @@ public class AppMenu extends MenuBar //implements EventHandler
                 try
                 {
                     chooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Music"));
-                    selectedFile = chooser.showOpenDialog(MediaApp.window);
+                    selectedFile = chooser.showOpenDialog(MainApp.window);
                     if (selectedFile != null)
                         openFile(selectedFile);
                 }
@@ -87,7 +81,7 @@ public class AppMenu extends MenuBar //implements EventHandler
                 catch (IllegalArgumentException e)
                 {
                     chooser.setInitialDirectory(new File(System.getProperty("user.home")));
-                    selectedFile = chooser.showOpenDialog(MediaApp.window);
+                    selectedFile = chooser.showOpenDialog(MainApp.window);
                     if (selectedFile != null)
                          openFile(selectedFile);
                     System.out.println("Here");
@@ -104,7 +98,7 @@ public class AppMenu extends MenuBar //implements EventHandler
                 try
                 {
                     chooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Music"));
-                    files = chooser.showOpenMultipleDialog(MediaApp.window);
+                    files = chooser.showOpenMultipleDialog(MainApp.window);
                     if (files != null)
                         addFile(files);
                     System.out.println("Add try");
@@ -113,7 +107,7 @@ public class AppMenu extends MenuBar //implements EventHandler
                 catch (IllegalArgumentException e)
                 {
                     chooser.setInitialDirectory(new File(System.getProperty("user.home")));
-                    files = chooser.showOpenMultipleDialog(MediaApp.window);
+                    files = chooser.showOpenMultipleDialog(MainApp.window);
                     if (files != null)
                         addFile(files);
                     System.out.println("Add caught");
