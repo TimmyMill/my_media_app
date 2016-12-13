@@ -123,8 +123,8 @@ public class AppMenu extends MenuBar //implements EventHandler
     void openFile(File file)
     {
         AudioFile af = new AudioFile(file);
-        MediaPlayer mp = new MediaPlayer(af.getMedia());
-        mp.play();
+//        MediaPlayer mp = new MediaPlayer(af.getMedia());
+//        mp.play();
     }
 
     void addFile(List<File> files)

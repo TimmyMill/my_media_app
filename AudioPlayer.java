@@ -6,12 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
+import javafx.util.Duration;
 
 public class AudioPlayer extends BorderPane
 {
     private MediaPlayer player;
     LibraryPane libraryPane;
     TopPane topPane;
+    Duration songDuration;
 
 
     public AudioPlayer(final MediaPlayer player)
@@ -63,6 +65,13 @@ public class AudioPlayer extends BorderPane
                 //stop
                 case "stop":
                 {
+                    if (status == Status.PLAYING
+                            || status == Status.PAUSED
+                            || status == Status.STALLED)
+                    {
+                        player.stop();
+                    }
+
                     break;
                 }
                 //forward
@@ -83,24 +92,24 @@ public class AudioPlayer extends BorderPane
         setLeft(libraryPane);
         setTheme();
 
+        player.setOnReady(new Runnable() {
+            @Override
+            public void run() {
+                songDuration = player.getMedia().getDuration();
+            }
+        });
+
         player.setOnPlaying(new Runnable() {
             @Override
             public void run() {
-
+                topPane.controlsPane.playbackToolBar.updatePlayButton(player.getStatus());
             }
         });
 
         player.setOnPaused(new Runnable() {
             @Override
             public void run() {
-
-            }
-        });
-
-        player.setOnReady(new Runnable() {
-            @Override
-            public void run() {
-
+                topPane.controlsPane.playbackToolBar.updatePlayButton(player.getStatus());
             }
         });
 
